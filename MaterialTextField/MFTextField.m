@@ -477,9 +477,14 @@ static NSTimeInterval const MFDefaultAnimationDuration = 0.3;
 
 - (void)updatePlaceholderText
 {
-    self.placeholderLabel.text = self.placeholder ?: self.placeholderAttributedString.string;
+    self.placeholderLabel.text = [self placeholderLabelText];
     [self.placeholderLabel sizeToFit];
     [self invalidateIntrinsicContentSize];
+}
+
+- (NSString *)placeholderLabelText
+{
+    return self.placeholder ?: self.placeholderAttributedString.string;
 }
 
 - (void)updatePlaceholderColor
